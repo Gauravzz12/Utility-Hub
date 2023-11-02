@@ -1,38 +1,92 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './HomePage';
+import './HomePage.css';
+import { fetchRandomQuote } from '../utils/api';
+import { Link } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
-function Header({ onPageChange }) {
-  return (
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Sab-Kuch-HUB</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Brain</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Mood</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Ideas</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-    </header>
-  );
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quote: { text: 'Believe In Yourself', author: 'Gaurav' },
+      showModal: false,
+    };
+  }
+
+  fetchRandomQuoteAndUpdateState = async () => {
+    const newQuote = await fetchRandomQuote();
+    if (newQuote) {
+      this.setState({ quote: newQuote, showModal: true });
+    }
+  };
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  render() {
+    const { quote, showModal } = this.state;
+
+    return (
+      <header>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary custom-navbar">
+          <div className="container-fluid">
+            <Link className="navbar-brand" to="/">
+              UTILITY-HUB
+            </Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link active" to="/">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/brain">Brain</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/mood">Mood</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/ideas">Ideas</Link>
+                </li>
+            </ul>
+              <button className="btn btn-outline-success" onClick={this.fetchRandomQuoteAndUpdateState}>
+                Get Inspired
+              </button>
+            </div>
+          </div>
+        </nav>
+        <Modal show={showModal} onHide={this.handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Here is Some Inspiration for You</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p className='quote-text'>{quote.text}</p>
+            <p className="Author">- {quote.author}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleCloseModal} className='Close-button'>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </header>
+    );
+  }
 }
 
 export default Header;

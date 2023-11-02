@@ -1,29 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import HomePage from './components/HomePage';
-// import ChallengesPage from './components/ChallengesPage';
-// import IdeasPage from './components/IdeasPage';
-// import QuizzesPage from './components/QuizzesPage';
-
-
+import Brain from './components/Brain';
+import Mood from './components/Mood';
+import Ideas from './components/Ideas';
+import MemoryGame from './components/MemoryGame';
+import Riddle from './components/Riddle'
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
   return (
-    <div>
-      <Header onPageChange={handlePageChange} />
-
-      {/* Display different components based on the current "page" */}
-      {currentPage === 'home' && <HomePage />}
-      
-
-      <Footer />
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/brain" element={<Brain />} />
+          <Route path="/mood" element={<Mood />} />
+          <Route path="/ideas" element={<Ideas />} />
+          <Route path="/memory-game" element={<MemoryGame />} />
+          <Route path="/Riddle" element={<Riddle />} />
+        </Routes>
+        
+      </div>
+    </Router>
   );
 }
 

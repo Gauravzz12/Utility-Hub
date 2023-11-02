@@ -1,0 +1,11 @@
+.Brain-Images{
+    object-fit:contain;
+    height: 300px;
+}
+.Brain-Card-Title{
+    color:steelblue;
+    font-weight: bolder;
+    font-size:x-large;
+    font-family:cursive;
+    
+}

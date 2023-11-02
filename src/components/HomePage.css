@@ -1,83 +1,104 @@
+
 .homepage-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .brand-name {
-    color: red;
-  }
-  .TagLine{
-    font-size: larger;
-    font-style: italic;
-    color:rebeccapurple;
-  }
-  
-  
-  .hero-section {
-    text-align: center;
-    margin-bottom: 40px;
-  
-    h1 {
-      font-size: 2.5em;
-      color: #3498db;
-    }
-  
-    p {
-      font-size: 1.2em;
-      color: #555;
-    }
-  
-    .brand-name {
-      color: #e74c3c;
-    }
-  }
-  
-  .feature-section {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
-  
-    .feature {
-      text-align: center;
-      max-width: 250px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
-      h2 {
-        color: #27ae60;
-      }
-  
-      p {
-        color: #777;
-      }
-    }
-  }
-  
-  /* Add this to your existing styles or create a new stylesheet */
+  margin: 0 auto;
+  padding: 20px;
 
-.quote-section {
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #e67e22;
- 
-  
-    .Quote {
-      font-size: 1.5em;
-      color: #333;
-    }
-  
-    .Author {
-      font-style: italic;
-      color: #555;
-    }
-  }
-  
+}
+.brand-name {
+  color: red;
+  animation: bounceIn 2.5s forwards; 
+}
+.feature-section{
+  max-width: 800px;
+  margin: 0 auto;
+  border: 3px solid black;
+}
+.TagLine {
+  font-size:x-large;
+  font-style: italic;
+  color: rebeccapurple;
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
+}
 
-  
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero-section h1 {
+  font-size: 2.5em;
+  color: #3498db;
+  opacity: 0;
+  transform: translateY(-100px);
+  animation: fadeInUp 0.8s forwards, bounceIn 2s forwards; 
+}
+.hero-section .brand-name {
+  color: #e74c3c;
+}
+
+.Caption-Heading {
+  color: gold;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  background-color: transparent;
+}
+
+.Caption-Text {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-family: cursive;
+  font-size: larger;
+}
+
+.Close-button {
+  background-color: green;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translateY(-100px);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-30px);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  80% {
+    transform: translateY(-15px);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(-10px);
+    animation-timing-function: ease-out;
+  }
+}
+
+.quote-text{
+  font-family: cursive;
+}

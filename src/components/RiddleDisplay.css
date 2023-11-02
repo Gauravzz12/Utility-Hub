@@ -1,0 +1,53 @@
+/* RiddleDisplay.css */
+
+.riddle-display {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    margin: 20px;
+    background-color: #ecf0f1;
+  }
+  
+  h2 {
+    color: #2c3e50;
+  }
+  
+  .button-container {
+    margin-top: 20px;
+  }
+  
+  .answer-container {
+    margin-top: 30px;
+  }
+  
+  .answer-container p {
+    font-weight: bold;
+    color: #e74c3c;
+  }
+  
+  .button-container button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .yes-button {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+  }
+  
+  .no-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+  }
+  
+  p {
+    margin-top: 20px;
+    color: #7f8c8d;
+    font-size: 18px;
+  }
+  
