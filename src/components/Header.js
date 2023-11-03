@@ -7,13 +7,10 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quote: { text: 'Believe In Yourself', author: 'Gaurav' },
-      showModal: false,
-    };
-  }
+  state = {
+    quote: { text: 'Believe In Yourself', author: 'Gaurav' },
+    showModal: false,
+  };
 
   fetchRandomQuoteAndUpdateState = async () => {
     const newQuote = await fetchRandomQuote();
